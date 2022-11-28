@@ -9,9 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { PersonComponent } from './person/person.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { PlatformComponent } from './platform/platform.component';
 
 @NgModule({
-  declarations: [AppComponent, PersonComponent],
+  declarations: [AppComponent, PersonComponent, PlatformComponent],
   imports: [
     BrowserModule,
     MatCardModule,

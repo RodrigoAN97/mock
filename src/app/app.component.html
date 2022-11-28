@@ -2,9 +2,25 @@
   <mat-card-header>
     <app-person
       [matMenuTriggerFor]="menu"
-      [firstName]="people[selectedIndex].firstName"
-      [lastName]="people[selectedIndex].lastName"
+      [firstName]="people[selectedPerson].firstName"
+      [lastName]="people[selectedPerson].lastName"
     ></app-person>
+    <mat-menu #menu="matMenu">
+      <ng-container *ngFor="let p of people; let i = index">
+        <button mat-menu-item *ngIf="i !== selectedPerson">
+          <app-person
+            (click)="selectedPerson = i"
+            [firstName]="p.firstName"
+            [lastName]="p.lastName"
+          ></app-person>
+        </button>
+      </ng-container>
+      <button mat-menu-item>
+        <div style="display: flex; justify-content: center" id="newPerson">
+          New <mat-icon>add</mat-icon>
+        </div>
+      </button>
+    </mat-menu>
     <span [matMenuTriggerFor]="datePicker"
       ><mat-icon>event</mat-icon>
       <p>{{ date$ | async | date }}</p>
@@ -14,24 +30,26 @@
       <div #closeDatePicker></div>
     </mat-menu>
   </mat-card-header>
-  <mat-menu #menu="matMenu">
-    <ng-container *ngFor="let p of people; let i = index">
-      <button mat-menu-item *ngIf="i !== selectedIndex">
-        <app-person
-          (click)="selectedIndex = i"
-          [firstName]="p.firstName"
-          [lastName]="p.lastName"
-        ></app-person>
-      </button>
-    </ng-container>
-    <button mat-menu-item>
-      <div style="display: flex; justify-content: center" id="newPerson">
-        New <mat-icon>add</mat-icon>
-      </div>
-    </button>
-  </mat-menu>
-  <div contenteditable>
-    Overcome key issues to meet key milestones drink from the firehose, yet
-    breef up (let's not try to) boil the ocean (here/there/everywhere)
-  </div>
+  <mat-card-content>
+    <div contenteditable>
+      Overcome key issues to meet key milestones drink from the firehose, yet
+      breef up (let's not try to) boil the ocean (here/there/everywhere)
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <app-platform
+      [platform]="platforms[selectedPlatform]"
+      [matMenuTriggerFor]="platformMenu"
+    ></app-platform>
+    <mat-menu #platformMenu="matMenu">
+      <ng-container *ngFor="let plat of platforms; let i = index">
+        <button mat-menu-item *ngIf="i !== selectedPlatform">
+          <app-platform
+            (click)="selectedPlatform = i"
+            [platform]="plat"
+          ></app-platform>
+        </button>
+      </ng-container>
+    </mat-menu>
+  </mat-card-footer>
 </mat-card>

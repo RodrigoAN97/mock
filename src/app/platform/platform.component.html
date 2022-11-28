@@ -1,0 +1,6 @@
+<img
+  *ngIf="platform !== 'None'"
+  [alt]="platform"
+  [src]="'assets/' + platform.toLowerCase() + '.svg'"
+/>
+<p>{{ platform }}</p>

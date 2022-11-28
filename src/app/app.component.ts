@@ -10,14 +10,16 @@ import { BehaviorSubject } from 'rxjs';
 export class AppComponent implements AfterViewInit {
   isDatePickerOpen = false;
   date$: BehaviorSubject<Date> = new BehaviorSubject(new Date());
-  selectedIndex = 0;
   @ViewChild(MatCalendar) datePicker!: MatCalendar<Date>;
   @ViewChild('closeDatePicker') closeDatePickerHelper!: ElementRef;
+  selectedPerson = 0;
   people = [
     { firstName: 'Bernice', lastName: 'Fletcher' },
     { firstName: 'Deann', lastName: 'Stevens' },
     { firstName: 'Samuel', lastName: 'Johnson' },
   ];
+  selectedPlatform = 0;
+  platforms = ['Jira', 'Slack', 'Trello', 'None'];
 
   ngAfterViewInit() {
     this.datePicker.selectedChange.subscribe((date) => {
