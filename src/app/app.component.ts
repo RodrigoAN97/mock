@@ -1,15 +1,22 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnDestroy {
   isDatePickerOpen = false;
   date$: BehaviorSubject<Date> = new BehaviorSubject(new Date());
+  sub!: Subscription;
   @ViewChild(MatCalendar) datePicker!: MatCalendar<Date>;
   @ViewChild('closeDatePicker') closeDatePickerHelper!: ElementRef;
   selectedPerson = 0;
@@ -22,9 +29,13 @@ export class AppComponent implements AfterViewInit {
   platforms = ['Jira', 'Slack', 'Trello', 'None'];
 
   ngAfterViewInit() {
-    this.datePicker.selectedChange.subscribe((date) => {
+    this.sub = this.datePicker.selectedChange.subscribe((date) => {
       date && this.date$.next(date);
       this.closeDatePickerHelper.nativeElement.click();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
