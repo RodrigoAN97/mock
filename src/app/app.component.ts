@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { BehaviorSubject } from 'rxjs';
@@ -17,8 +11,15 @@ import { BehaviorSubject } from 'rxjs';
 export class AppComponent implements AfterViewInit {
   isDatePickerOpen = false;
   date$: BehaviorSubject<Date> = new BehaviorSubject(new Date());
+  // selectedPerson$: BehaviorSubject<number> = new BehaviorSubject(0);
+  selectedIndex = 0;
   @ViewChild(MatCalendar) datePicker!: MatCalendar<Date>;
   @ViewChild('closeDatePicker') closeDatePickerHelper!: ElementRef;
+  people = [
+    { firstName: 'Bernice', lastName: 'Fletcher' },
+    { firstName: 'Deann', lastName: 'Stevens' },
+    { firstName: 'Samuel', lastName: 'Johnson' },
+  ];
 
   ngAfterViewInit() {
     this.datePicker.selectedChange.subscribe((date) => {

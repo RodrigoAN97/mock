@@ -2,10 +2,10 @@
   <mat-card-header>
     <app-person
       [matMenuTriggerFor]="menu"
-      firstName="Bernice"
-      lastName="Fletcher"
+      [firstName]="people[selectedIndex].firstName"
+      [lastName]="people[selectedIndex].lastName"
     ></app-person>
-    <span  [matMenuTriggerFor]="datePicker"
+    <span [matMenuTriggerFor]="datePicker"
       ><mat-icon>event</mat-icon>
       <p>{{ date$ | async | date }}</p>
     </span>
@@ -15,12 +15,15 @@
     </mat-menu>
   </mat-card-header>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <app-person firstName="Deann" lastName="Stevens"></app-person>
-    </button>
-    <button mat-menu-item>
-      <app-person firstName="Samuel" lastName="Johnson"></app-person>
-    </button>
+    <ng-container *ngFor="let p of people; let i = index">
+      <button mat-menu-item *ngIf="i !== selectedIndex">
+        <app-person
+          (click)="selectedIndex = i"
+          [firstName]="p.firstName"
+          [lastName]="p.lastName"
+        ></app-person>
+      </button>
+    </ng-container>
     <button mat-menu-item>
       <div style="display: flex; justify-content: center" id="newPerson">
         New <mat-icon>add</mat-icon>
