@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatCardModule } from '@angular/material/card';
 import { AppComponent } from './app.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { PersonComponent } from './person/person.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, PersonComponent],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatCardModule,
+    MatMenuModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

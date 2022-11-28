@@ -1,0 +1,24 @@
+:host {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  width: fit-content;
+  align-items: center;
+  .initials {
+    display: block;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: #70d9b6;
+    text-align: center;
+    p {
+      height: inherit;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      color: #ffffff;
+    }
+  }
+}

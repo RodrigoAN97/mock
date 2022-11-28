@@ -1,0 +1,24 @@
+<mat-card>
+  <app-person
+    [matMenuTriggerFor]="menu"
+    firstName="Bernice"
+    lastName="Fletcher"
+  ></app-person>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <app-person firstName="Deann" lastName="Stevens"></app-person>
+    </button>
+    <button mat-menu-item>
+      <app-person firstName="Samuel" lastName="Johnson"></app-person>
+    </button>
+    <button mat-menu-item>
+      <div style="display: flex; justify-content: center" id="newPerson">
+        New <mat-icon>add</mat-icon>
+      </div>
+    </button>
+  </mat-menu>
+  <div contenteditable>
+    Overcome key issues to meet key milestones drink from the firehose, yet
+    breef up (let's not try to) boil the ocean (here/there/everywhere)
+  </div>
+</mat-card>
