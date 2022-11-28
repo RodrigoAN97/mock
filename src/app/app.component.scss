@@ -1,8 +1,24 @@
 :host {
   font-family: Helvetica, Arial, sans-serif;
   mat-card {
+    mat-card-header {
+      ::ng-deep .mat-mdc-card-header-text {
+        display: none;
+      }
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      span {
+        mat-icon {
+          margin-right: 10px;
+        }
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+    }
     margin: 300px auto;
-    width: 300px;
+    width: 400px;
     padding: 15px;
     mat-menu {
       button {
