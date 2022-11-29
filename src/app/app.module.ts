@@ -10,6 +10,7 @@ import { PersonComponent } from './person/person.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { PlatformComponent } from './platform/platform.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [AppComponent, PersonComponent, PlatformComponent],
@@ -22,6 +23,7 @@ import { PlatformComponent } from './platform/platform.component';
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -15,10 +15,15 @@
           ></app-person>
         </button>
       </ng-container>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="newPerson($event)" *ngIf="!addNew">
         <div style="display: flex; justify-content: center" id="newPerson">
           New <mat-icon>add</mat-icon>
         </div>
+      </button>
+      <button mat-menu-item *ngIf="addNew" (click)="$event.stopPropagation()">
+        <mat-form-field>
+          <input matInput placeholder="Add Person" value="" (keyup.enter)="addPerson($event)"/>
+        </mat-form-field>
       </button>
     </mat-menu>
     <span [matMenuTriggerFor]="datePicker"

@@ -27,6 +27,21 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   ];
   selectedPlatform = 0;
   platforms = ['Jira', 'Slack', 'Trello', 'None'];
+  addNew = false;
+
+  newPerson(event: Event) {
+    console.log(event);
+    event.stopPropagation();
+    this.addNew = true;
+  }
+
+  addPerson(event: any) {
+    const value = event.target.value;
+    const firstName = value.includes(' ') ? value.split(' ')[0] : value;
+    const lastName = value.includes(' ') ? value.split(' ')[1] : '';
+    this.people.push({ firstName, lastName });
+    this.addNew = false;
+  }
 
   ngAfterViewInit() {
     this.sub = this.datePicker.selectedChange.subscribe((date) => {
